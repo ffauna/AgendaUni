@@ -1,0 +1,686 @@
+﻿<html>
+<head>
+    <title>
+        calendar
+    </title>
+    <style>
+        body{
+            background:white;
+        }
+        .izquierda{
+            max-width:20%;
+            margin:auto;
+            font-family:Arial;
+            text-align:initial;
+            float:left;
+            
+            
+        }
+        .mes{
+            text-align:center;
+            background:red;
+            font-size:1em;
+            letter-spacing:0.5px;
+            color:black;
+            padding:15px;
+            border:1px solid skyblue;
+         
+       
+        }
+        .mes2{
+            text-align:center;
+            background:white;
+            font-size:1.5em;
+            letter-spacing:0.5px;
+            color:black;
+            padding:6px;
+            border:1px solid skyblue;
+        }
+        .Calendarios{
+            max-width:250px;
+            margin:auto;
+            font-family:Arial;
+            text-align:initial;
+            text-align:center;
+            background:white;
+            font-size:1em;
+            letter-spacing:1px;
+            color:blue;
+            padding:20px;
+            border:1px solid skyblue;
+             font-size:1em;
+            
+           
+        }
+        .checkboxes{
+            font-family:'Arial Rounded MT';
+           color:black;
+           text-align:left;
+            font-size:1em;
+        }
+        .td1{
+            color:gray;
+            font-size:0.5em;
+            
+        }
+        .td2{
+            color:black;
+            font-size:0.5em;
+        }
+        .td3{
+            color:dimgray;
+            font-size:1em;
+            letter-spacing:1px;
+            padding:11px;
+             height:70px;
+            width:50px;
+        }
+     
+        .td4{
+            font-size:1em;
+             padding:11px;
+             width:50px;
+         
+        }
+        .td5{
+            height:75px;
+            width:75px;
+            
+
+        }
+        .centro{
+            max-width:75%;
+              margin:auto;
+            font-family:Arial;
+            text-align:initial;
+            float:left;
+            
+        }
+        .combobox{
+            float:right
+        }
+        .dias{
+            float:left;
+        }
+        .horas{
+            float:right;
+        }
+        .derecha{
+            
+            max-width:5%;
+              margin:auto;
+            font-family:Arial;
+            text-align:initial;
+            float:left;
+           
+        }
+    </style>
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+
+    <div class="izquierda" >
+        <br />
+        <br />
+
+        <br />
+        <br />
+        <br />
+        <div class="mes">
+            <strong> Mayo </strong>
+            <strong>  2018 </strong>
+            <strong class="td2">  <input type="button" id="<" value="<" style="font-size:1em;width:30px; height:20px;" /> </strong>
+            <strong class="td2">  <input type="button" id=">" value=">" style="font-size:1em;width:30px; height:20px;" /> </strong>
+
+        </div>
+        <div id="minicalendario" style="display:block">
+            <table>
+                <tr>
+
+                    <th class="td2"> LUN  </th>
+                    <th class="td2"> MAR  </th>
+                    <th class="td2"> MIE  </th>
+                    <th class="td2"> JUE  </th>
+                    <th class="td2"> VIE  </th>
+                    <th class="td2"> SAB  </th>
+                    <th class="td2"> DOM  </th>
+                </tr>
+
+                <tr>
+
+
+
+                    <td class="td1">28</td>
+                    <td class="td1">29</td>
+                    <td class="td1">30</td>
+                    <td class="td2">1</td>
+                    <td class="td2">2</td>
+                    <td class="td2">3</td>
+                    <td class="td2">4</td>
+                    <td class="td2"><input type="button" id=btt1" value="Semana 1" style="font-size:1em;width:60px; height:15px;" /></td>
+
+                </tr>
+                <tr>
+                    <td class="td2">5</td>
+                    <td class="td2">6</td>
+                    <td class="td2">7</td>
+                    <td class="td2">8</td>
+                    <td class="td2">9</td>
+                    <td class="td2">10</td>
+                    <td class="td2">11</td>
+                    <td class="td2"><input type="button" id=btt2" value="Semana 2" style="font-size:1em;width:60px; height:15px;" /></td>
+                </tr>
+                <tr>
+                    <td class="td2">12</td>
+                    <td class="td2">13</td>
+                    <td class="td2">14</td>
+                    <td class="td2">15</td>
+                    <td class="td2">16</td>
+                    <td class="td2">17</td>
+                    <td class="td2">18</td>
+                    <td class="td2"><input type="button" id=btt3" value="Semana 3" style="font-size:1em;width:60px; height:15px;" /></td>
+                </tr>
+                <tr>
+                    <td class="td2">19</td>
+                    <td class="td2">20</td>
+                    <td class="td2">21</td>
+                    <td class="td2">22</td>
+                    <td class="td2">23</td>
+                    <td class="td2">24</td>
+                    <td class="td2">25</td>
+                    <td class="td2"><input type="button" id=btt4" value="Semana 4" style="font-size:1em;width:60px; height:15px;" /></td>
+                </tr>
+                <tr>
+                    <td class="td2">26</td>
+                    <td class="td2">27</td>
+                    <td class="td2">28</td>
+                    <td class="td2">29</td>
+                    <td class="td2">30</td>
+                    <td class="td2">31</td>
+                    <td class="td1">1</td>
+                    <td class="td2"><input type="button" id=btt5" value="Semana 5" style="font-size:1em;width:60px; height:15px;" /></td>
+                </tr>
+                <tr>
+                    <td class="td1">2</td>
+                    <td class="td1">3</td>
+                    <td class="td1">4</td>
+                    <td class="td1">5</td>
+                    <td class="td1">6</td>
+                    <td class="td1">7</td>
+                    <td class="td1">8</td>
+                    <td class="td2"><input type="button" id=btt6" value="Semana 6" style="font-size:1em;width:60px; height:15px;" /></td>
+                </tr>
+
+            </table>
+
+            <br />
+            <br />
+        </div>
+        <div class="Calendarios">
+
+            <strong> Calendarios: </strong>
+            <br />
+            <br />
+
+
+            <div class="checkboxes">
+                <input type="checkbox" id="cbox1" value="Calendario1" />
+                Oficial <br />
+
+                <input type="checkbox" id="cbox2" value="Calendario2" />
+                No oficial<br />
+                <input type="checkbox" id="cbox3" value="Calendario3" />
+                Privado<br />
+
+            </div>
+
+        </div>
+        <br />
+        <br />
+        <br />
+        <div class="Eventos" style="border:1px solid skyblue;display:none"id="eventos">
+
+            <strong> Eventos: </strong>
+            <br />
+            <br />
+
+
+
+            Evento 1
+            <br />
+            Evento 2
+            <br />
+            Evento 3
+
+        </div>
+        
+    </div>
+
+
+
+    <div class="centro" >
+        <br />
+        <br />
+        <br />
+
+        <div class="combobox" >
+            <div class="dias">
+                <select name="visualización días" id="dias">
+
+                    <option>Semanal</option>
+
+                    <option>Mensual</option>
+
+
+
+                </select>
+            </div>
+
+            <div class="horas">
+                <select name="visualización horas">
+                    <option>Mañana</option>
+
+                    <option>Tarde</option>
+
+                    <option>Todo</option>
+                </select>
+            </div>
+        </div>
+
+        <br />
+        <button type="button" style="background:white; "><img src="C:\Users\usuario\Desktop\Proyectos Visual Studio\AgendaUniversitaria\imagenes\añadir evento.png" width="18" height="18" /></button>
+        <button type="button" style="background:white; "><img src="C:\Users\usuario\Desktop\Proyectos Visual Studio\AgendaUniversitaria\imagenes\invitación.png" width="18" height="18" /></button>
+
+        <br />
+
+
+        <div class="mes2">
+            <strong> Mayo </strong>
+            <strong>  2018 </strong>
+
+        </div>
+        <div id="semanal" style="display:block;">
+            
+                <table border="1">
+                    <tr>
+                        <th class="td1"> GMT<br />+02 </th>
+                        <th class="td3"> LUN - </th>
+                        <th class="td3"> MAR - </th>
+                        <th class="td3"> MIE - </th>
+                        <th class="td3"> JUE - </th>
+                        <th class="td3"> VIE - </th>
+                        <th class="td3"> SAB - </th>
+                        <th class="td3"> DOM - </th>
+                    </tr>
+                    </table>
+                    <div id="mañana" style="display:none">
+                        <table border="1">
+                            <tr>
+
+
+                                <td class="td1">0:00  </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+
+                            </tr>
+
+                            <tr>
+                                <td class="td1">1:00  </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4">lol </td>
+                            </tr>
+                            <tr>
+                                <td class="td1">2:00 </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                            </tr>
+                            <tr>
+                                <td class="td1">3:00 </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                            </tr>
+                            <tr>
+                                <td class="td1">4:00 </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                            </tr>
+                            <tr>
+                                <td class="td1">5:00 </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                            </tr>
+                            <tr>
+                                <td class="td1">6:00 </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                            </tr>
+                            <tr>
+                                <td class="td1">7:00 </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                            </tr>
+                            <tr>
+                                <td class="td1">8:00 </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                            </tr>
+                            <tr>
+                                <td class="td1">9:00 </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                            </tr>
+                            <tr>
+                                <td class="td1">10:00 </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                            </tr>
+                            <tr>
+                                <td class="td1">11:00 </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                            </tr>
+                            <tr>
+                                <td class="td1">12:00 </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="tarde" style="display:block">
+                        <table border="1">
+                            <tr>
+                                <td class="td1">13:00 </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                            </tr>
+                            <tr>
+                                <td class="td1">14:00 </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+
+
+                            </tr>
+                            <tr>
+                                <td class="td1">15:00 </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+
+
+                            </tr>
+                            <tr>
+                                <td class="td1">16:00 </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+
+
+                            </tr>
+                            <tr>
+                                <td class="td1">17:00 </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+
+
+                            </tr>
+                            <tr>
+                                <td class="td1">18:00 </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+
+
+                            </tr>
+                            <tr>
+                                <td class="td1">19:00 </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+
+
+                            </tr>
+                            <tr>
+                                <td class="td1">20:00 </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+
+
+                            </tr>
+                            <tr>
+                                <td class="td1">21:00 </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+
+
+                            </tr>
+                            <tr>
+                                <td class="td1">22:00 </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+
+
+                            </tr>
+                            <tr>
+                                <td class="td1">23:00 </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+                                <td class="td4"> </td>
+
+
+                            </tr>
+
+                        </table>
+                    </div>
+
+</div>
+        <div id="mensual" style="display:none;">
+            <table border="1" cellspacing="0" cellpadding="0">
+                <tr>
+
+                    <th class="td3"> LUN - </th>
+                    <th class="td3"> MAR - </th>
+                    <th class="td3"> MIE - </th>
+                    <th class="td3"> JUE - </th>
+                    <th class="td3"> VIE - </th>
+                    <th class="td3"> SAB - </th>
+                    <th class="td3"> DOM - </th>
+                </tr>
+
+                <tr>
+
+
+
+                    <td class="td3"  align="left" valign="top">28 </td>
+                    <td class="td3"  align="left" valign="top">29 </td>
+                    <td class="td3"  align="left" valign="top">30</td>
+                    <td class="td5"  align="left" valign="top">1</td>
+                    <td class="td5"  align="left" valign="top">2</td>
+                    <td class="td5"  align="left" valign="top">3</td>
+                    <td class="td5"  align="left" valign="top">4</td>
+                    
+
+                </tr>
+                <tr>
+                    <td class="td5"  align="left" valign="top">5</td>
+                    <td class="td5"  align="left" valign="top">6</td>
+                    <td class="td5"  align="left" valign="top">7</td>
+                    <td class="td5"  align="left" valign="top">8</td>
+                    <td class="td5"  align="left" valign="top">9</td>
+                    <td class="td5"  align="left" valign="top">10</td>
+                    <td class="td5"  align="left" valign="top">11</td>
+                    
+                </tr>
+                <tr>
+                    <td class="td5"  align="left" valign="top">12</td>
+                    <td class="td5"  align="left" valign="top">13</td>
+                    <td class="td5"  align="left" valign="top">14</td>
+                    <td class="td5"  align="left" valign="top">15</td>
+                    <td class="td5"  align="left" valign="top">16</td>
+                    <td class="td5"  align="left" valign="top">17</td>
+                    <td class="td5"  align="left" valign="top">18</td>
+                    
+                <tr>
+                    <td class="td5" align="left" valign="top">19</td>
+                    <td class="td5" align="left" valign="top">20</td>
+                    <td class="td5" align="left" valign="top">21</td>
+                    <td class="td5" align="left" valign="top">22</td>
+                    <td class="td5"align="left" valign="top">23</td>
+                    <td class="td5"align="left" valign="top">24</td>
+                    <td class="td5"align="left" valign="top">25</td>
+
+                </tr>
+                <tr>
+                    <td class="td5"align="left" valign="top">26</td>
+                    <td class="td5"align="left" valign="top">27</td>
+                    <td class="td5"align="left" valign="top">28</td>
+                    <td class="td5"align="left" valign="top">29</td>
+                    <td class="td5"align="left" valign="top">30</td>
+                    <td class="td5"align="left" valign="top">31</td>
+                    <td class="td3"align="left" valign="top">1</td>
+                    
+                </tr>
+                <tr>
+                    <td class="td3"align="left" valign="top" style="height:75px">2</td>
+                    <td class="td3"align="left" valign="top">3</td>
+                    <td class="td3"align="left" valign="top">4</td>
+                    <td class="td3"align="left" valign="top">5</td>
+                    <td class="td3"align="left" valign="top">6</td>
+                    <td class="td3"align="left" valign="top">7</td>
+                    <td class="td3"align="left" valign="top">8</td>
+                    
+                </tr>
+
+            </table>
+
+            <br />
+            <br />
+        </div>
+
+   
+    <div class="derecha">
+        <br /><br /><br /><br /><br /><br /><br />
+        <button type="button" style="background:white; position:center; float:right;"><img src="C:\Users\usuario\Desktop\Proyectos Visual Studio\AgendaUniversitaria\imagenes\usuario.png" width="18" height="18" /></button>
+        <button type="button" style="background:white; position:center; float:right;"><img src="C:\Users\usuario\Desktop\Proyectos Visual Studio\AgendaUniversitaria\imagenes\notificaciones-botón.png" width="18" height="18" /></button>
+        <button type="button" style="background:white; position:center; float:right;"><img src="C:\Users\usuario\Desktop\Proyectos Visual Studio\AgendaUniversitaria\imagenes\ajustes.png" width="18" height="18" /></button>
+        <button type="button" style="background:white; position:center; float:right;"><img src="C:\Users\usuario\Desktop\Proyectos Visual Studio\AgendaUniversitaria\imagenes\calendario.png" width="18" height="18" /></button>
+
+    </div>
+</body>
+</html>
