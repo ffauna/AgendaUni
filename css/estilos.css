@@ -1,9 +1,13 @@
+* {
+  box-sizing: border-box;
+}
 body {
     /*background: url("/AgendaUni/img/fondo.png") no-repeat scroll center 0 transparent;*/
     background-size: contain;
     align-items: center;
     margin: 0;
     padding: 0;
+    padding-bottom: 6rem;
     background-color: #34495e;
 }
 
@@ -22,19 +26,21 @@ header {
     font-family: 'Roboto', sans-serif;
 }
 
-footer {
-    top: 105%;
+.footer {
     position: absolute;
-    margin: auto;
-    size: 40px;
-    left: 46%;
-    color: white;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 20px;
+    text-align: center;
+    color: #FFF;
+    background: #282830;
+    align-items: baseline;
 }
 
 .loginBox {
     margin: 0 auto;
     width: 300px;
-    opacity: 30%;
     text-align: center;
     border-top-left-radius: 17px;
     border-top-right-radius: 17px;
@@ -123,7 +129,6 @@ footer {
     height: 100%;
     right: 0;
     padding-top: 20px;
-    margin-right: 8px;
 }
 
 .lateralnav button{
@@ -168,8 +173,6 @@ footer {
 }
 
 .boton_creaCalen button:hover{
-    width: 200px;
-    height: 70px;
     border-color: #e74c3c;
     background-color: #e74c3c;
 }
@@ -214,6 +217,14 @@ footer {
     height: 600px;
     width: 600px;
     transform: translate(90%,0);
+}
+
+}
+#crear_calendario div {
+    width: 400px;
+    background-color: grey;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
 }
 
 #crear_evento p{
@@ -342,13 +353,21 @@ footer {
     width : 200px;
     height : 250px;
     overflow : auto;
-
 }
+
+.oculto{
+    display: none;
+}
+
 .about {
     font-size: 20px;
     margin: 10px;
     font-family: 'Script MT';
     text-align: initial;
     text-align: center;
-    
+    color: white
+}
+
+.about h1 {
+    color: 
 }

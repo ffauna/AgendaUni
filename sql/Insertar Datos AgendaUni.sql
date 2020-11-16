@@ -3,19 +3,17 @@ OID_JUAN INTEGER;
 OID_JOSE INTEGER;
 OID_MATILDE INTEGER;
 OID_LUISA INTEGER;
-
 OID_CAL1 INTEGER;
-
 OID_EV1 INTEGER;
 
 BEGIN
 INSERTAR_USUARIO('Juan','Pérez Martín','PAS', 'juan@us.es', 'qwerty');
 OID_JUAN := SEC_USUARIOS.CURRVAL;
-INSERTAR_USUARIO('Josefa','López Consuegra', 'PDI' , 'josefa@us.es', '123456');
+INSERTAR_USUARIO('Josefa','López Consuegra', 'PAS' , 'josefa@us.es', '123456');
 OID_JOSE := SEC_USUARIOS.CURRVAL;
 INSERTAR_USUARIO('Matilde','Arjona Gómez', 'ALUMNO', 'matilde@us.es', 'matilde');
 OID_MATILDE := SEC_USUARIOS.CURRVAL;
-INSERTAR_USUARIO('Luisa','García Marín', 'PDI', 'luisa@us.es', 'qwerty');
+INSERTAR_USUARIO('Luisa','García Marín', 'ALUMNO', 'luisa@us.es', 'qwerty');
 OID_LUISA := SEC_USUARIOS.CURRVAL;
 
 SELECT SEC_EVENTOS.CURRVAL INTO OID_EV1 FROM DUAL;

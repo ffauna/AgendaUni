@@ -1,23 +1,23 @@
 <?php
-    session_start();
+session_start();
 
-    require_once ("gestionBD.php");
+require_once ("gestionBD.php");
 
-    if(!isset($_SESSION['form'])){
-        $form['uvus'] = "";
-        $form['pass'] = "";
-        $form['nombre'] = "";
-        $form['apellidos'] = "";
-        $form['tipousuario'] = "";
+if(!isset($_SESSION['form'])){
+    $form['uvus'] = "paco";
+    $form['pass'] = "";
+    $form['nombre'] = "";
+    $form['apellidos'] = "";
+    $form['tipousuario'] = "";
 
-        $_SESSION['form'] = $form;
-    } else {
-        $form = $_SESSION['form'];
-    }
+    $_SESSION['form'] = $form;
+} else {
+    $form = $_SESSION['form'];
+}
 
-    if(isset($_SESSION['errores'])){
-        $errores = $_SESSION['errores'];
-    }
+if(isset($_SESSION['errores'])){
+    $errores = $_SESSION['errores'];
+}
 
     $conexion = crearConexionBD();
 ?>
@@ -29,12 +29,12 @@
     <title>AgendaUni: Registro</title>
     <link href="img/favicon.ico" rel="icon" type="image/ico" />
     <link rel="stylesheet" type="text/css" href="css/estilos.css" />
-	<script src="js/validacion_formularios.js" type="text/javascript"></script>
+    <script src="js/validacion_formularios.js" type="text/javascript"></script>
 </head>
 
 <body class="b_registro">
     <?php
-        include_once ("cabecera.php");
+    include_once ("cabecera.php");
     ?>
 
     <?php
@@ -45,56 +45,45 @@
         echo "</div>";
     }
     ?>
-    <form id="altaUsuario" method="POST" action="validar_alta_usuario.php">
-        <p><i>Campos obligatorios marcados con </i>*</p>
-        <fieldset><legend>Datos de Registro</legend>
+    <div>
+        <form id="altaUsuario" method="POST" action="validar_alta_usuario.php">
+            <p><i>Campos obligatorios marcados con </i>*</p>
+            <fieldset><legend>Datos de Registro</legend>
 
-            <div class="datosReg">
-            <div><label for="uvus"><em>*</em> UVUS:</label>
-                <input id="uvus_Reg" name="uvus" type="text" size="40" value="<?php echo $form['uvus'];?>" required/>
-            </div>
+                <div class="datosReg">
+                    <div><label for="uvus"><em>*</em> UVUS:</label>
+                        <input id="uvus_Reg" name="uvus" type="text" size="40" required/>                 <!-- value="<?php echo($form['uvus']); ?>" -->
+                    </div>
 
-            <div><label for="pass"><em>*</em> Contraseña:</label>
-                <input type="password" name="pass" id="pass" placeholder="Mínimo 8 caracteres entre letras y dígitos" minlength="8" required oninput="passwordValidation()";/>
-            </div>
+                    <div><label for="pass"><em>*</em> Contraseña:</label>
+                        <input type="password" name="pass" id="pass" placeholder="Mínimo 8 caracteres entre letras y dígitos" minlength="8" required oninput="passwordValidation()";/>        
+                    </div>
 
-            <div> <label for="confirmpass"><em>*</em>Confirmar Password: </label>
-                <input type="password" name="confirmpass" id="confirmpass" placeholder="Confirmación de contraseña"  oninput="passwordConfirmation();" required"/>
-            </div>
-            </div>
+                    <div> <label for="confirmpass"><em>*</em>Confirmar Password: </label>
+                        <input type="password" name="confirmpass" id="confirmpass" placeholder="Confirmación de contraseña"  oninput="passwordConfirmation();" required/>
+                    </div>
+                </div>
+            </fieldset>
 
-        </fieldset>
-        <fieldset><legend>Datos Personales</legend>
+            <fieldset><legend>Datos Personales</legend>
 
-            <div><label for="nombre"><em>*</em> Nombre:</label>
-                <input id="nombre" name="nombre" type="text" size="40" maxlength="40" value="<?php echo $form['nombre'];?>" required>
-            </div>
+                <div><label for="nombre"><em>*</em> Nombre:</label>
+                    <input id="nombre" name="nombre" type="text" size="40" maxlength="40" required>
+                </div>
 
-            <div><label for="apellidos">Apellidos:</label>
-                <input id="apellidos" name="apellidos" type="text" size="40" maxlength="40" value="<?php echo $form['apellidos'] ?>">
-            </div>
+                <div><label for="apellidos">Apellidos:</label>
+                    <input id="apellidos" name="apellidos" type="text" size="40" maxlength="40"/>
+                </div>
+            </fieldset>
+            <input id="registro" type="submit" value="Registrarse">
+        </form>
 
-            <div><label><em>*</em> Tipo:</label>
-                <label>
-                    <input name="tipoUsuario" type="radio" value="ALUMNO" checked/>
-                    Alumno</label>
-                <label>
-                    <input name="tipoUsuario" type="radio" value="PDI"/>
-                    PDI</label>
-                <label>
-                    <input name="tipoUsuario" type="radio" value="PAS"/>
-                    PAS</label>
-            </div>
-        </fieldset>
-        <input id="registro" type="submit" value="Registrarse">
-    </form>
-
+    </div>
 
 </body>
 
 <?php
 include_once ("pie.php");
 cerrarConexionBD($conexion);
-
 ?>
 </html>

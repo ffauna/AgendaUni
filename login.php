@@ -61,21 +61,17 @@ include_once("cabecera.php");
             </div>
             <input type="text" name="uvus" id="uvus" placeholder="UVUS" required/>
             <input type="password" name="pass" id="pass" placeholder="Contraseña" required/>
-            <label for="entrar"><a href="form_nuevo_usuario.php">¡Registrate!</a></label>
+            <label for="registro"><a href="form_nuevo_usuario.php">¡Registrate!</a></label>
             <input id="entrar" type="submit" name="submit" value="Entrar"/>
-			<div>
-			<label for="about"><a href="about.php">    ¡Sobre Nosotros!</a></label>
-			</div>
+            <div>
+            <label for="about"><a href="about.php">    ¡Sobre Nosotros!</a></label>
+            </div>
         </form>
     </div>
 </main>
-
-<footer>
-
-    &copy; AgendaUni 2019
-	 
-</footer>
-
+<?php
+include_once("pie.php");
+?>
 </body>
 </html>
 
