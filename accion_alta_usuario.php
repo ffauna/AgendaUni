@@ -20,6 +20,9 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
+  <link href="img/favicon.ico" rel="icon" type="image/ico"/>
+  <link rel="stylesheet" type="text/css" href="css/estilos.css"/>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <title>AgendaUni: Alta de Usuario con éxito</title>
 </head>
 
@@ -52,5 +55,6 @@
 </html>
 <?php
 	cerrarConexionBD($conexion);
+	header("refresh:3;url=main.php");
 ?>
 

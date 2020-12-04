@@ -41,12 +41,6 @@ function validarDatosUsuario($conexion, $nuevoUsuario){
         $errores[] = "<p>El uvus es incorrecto: " . $nuevoUsuario["uvus"]. "</p>";
     }
 
-    if($nuevoUsuario["tipoUsuario"] != "ALUMNO" &&
-        $nuevoUsuario["tipoUsuario"] != "PAS" &&
-        $nuevoUsuario["tipoUsuario"] != "PDI") {
-        $errores[] = "<p>El tipo debe ser ALUMNO, PAS o PDI</p>";
-    }
-
     if(!isset($nuevoUsuario["pass"]) || strlen($nuevoUsuario["pass"])<8){
         $errores [] = "<p>Contraseña no válida: debe tener al menos 8 caracteres</p>";
     }else if(!preg_match("/[a-z]+/", $nuevoUsuario["pass"]) ||

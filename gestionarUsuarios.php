@@ -1,11 +1,10 @@
 <?php
  function alta_usuario($conexion, $usuario) {
 	try {
-		$consulta = "CALL INSERTAR_USUARIO(:nombre, :ape, :tipo, :uvus, :pass)";
+		$consulta = "CALL INSERTAR_USUARIO(:nombre, :ape, :uvus, :pass)";
 		$stmt=$conexion->prepare($consulta);
 		$stmt->bindParam(':nombre',$usuario["nombre"]);
 		$stmt->bindParam(':ape',$usuario["apellidos"]);
-        $stmt->bindParam(':tipo',$usuario["tipoUsuario"]);
 		$stmt->bindParam(':uvus',$usuario["uvus"]);
 		$stmt->bindParam(':pass',$usuario["pass"]);
 		$stmt->execute();
