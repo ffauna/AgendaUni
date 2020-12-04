@@ -2,13 +2,9 @@
 
     if(!isset($_SESSION['form'])){
         $form['nombre'] = "";
-        $form['latitud'] = "";
-        $form['longitud'] = "";
         $form['fecha'] = "";
         $form['horainicio'] = "";
 		$form['horafin'] = "";
-		$form['tipoevento'] = "";
-		$form['diacompleto'] = "";
 		$form['descripcion'] = "";
 
         $_SESSION['form'] = $form;
@@ -31,47 +27,25 @@
     ?>
     <form id="nuevoEvento" method="get" action="main.php">
         <div class="f_cabecera">
-            <p>Crea tu evento</p>
+            <p>Programa un evento!</p>
         </div>
         <div class="datos_evento">
-            <div><label for="nombre"><em>*</em> Nombre:</label>
+            <div><label for="nombre">Título:</label>
                 <input id="nombre" name="nombre" type="text" size="40" value="<?php echo $form['nombre'];?>" required/>
             </div>
-
-            <div><label for="latitud">Latitud:</label>
-                <input type="text" name="latitud" id="latitud" value="<?php echo $form['latitud'];?>"/>
+            <div><label>Fecha:</label>
+                <input id="fecha" type="date"></div>
+            <div><label>Hora inicio:</label>
+                <input id="horainicio" type="time">
             </div>
-
-             <div><label for="longitud">Longitud:</label>
-                <input type="text" name="longitud" id="longitud" value="<?php echo $form['longitud'];?>"/>
-            </div>
-        
-            <div><label><em>*</em> Tipo:</label>
-                <label>
-                    <input name="tipoevento" type="radio" value="OFICIAL"/>
-                    Oficial</label>
-                <label>
-                    <input name="tipoevento" type="radio" value="NO_OFICIAL"/>
-                    No oficial</label>
-                <label>
-                    <input name="tipoevento" type="radio" value="PRIVADO" checked/>
-                    Privado</label>
-            </div>
-
-            <div><label>Dia completo:</label>
-                <label>
-                    <input name="diacompleto" type="checkbox" value="SI"/>Sí</label>
+            <div><label>Hora fin:</label>
+                <input id="horafin" type="time">
             </div>
             <div><label for="descripcion">Descripcion:</label>
                 <input id="descripcion" name="descripcion" type="text" size="40" value="<?php echo $form['descripcion'];?>" />
             </div>
-<!--            <div><label for="calEvento">Calendario:</label>-->
-<!--                <input id="calEvento" name="calEvento" type="text" size="40" value="--><?php //echo $form['descripcion'];?><!--" />-->
-<!--            </div>-->
-        </div>
-        </fieldset>
-        <input type="submit" value="Crear">
+            <div>
+            <input type="submit" value="Crear"></div>
     </form>
-</div>
 
  
