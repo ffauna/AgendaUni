@@ -79,14 +79,16 @@ $meses = array(
     <title>AgendaUni</title>
 </head>
 <body>
-<?php
-include_once("menu.php");
-include_once("form_nuevo_calendario.php");
-?>
 
 <main>
+
     <div class="boton_creaCalen">
-        <button name="btn_creaCalen" onclick=esconderDiv();><i class="fas fa-plus"></i>Nuevo Calendario</button>
+        <button name="btn_creaCalen" id="crear-calendario"><i class="fas fa-plus"></i>Nuevo Calendario</button>
+    </div>
+    <div id="form-calendario" class="oculto">
+        <?php
+        include_once("form_nuevo_calendario.php");
+        ?>
     </div>
 
     <div class="calendarios_paginados">
@@ -156,12 +158,6 @@ include_once("form_nuevo_calendario.php");
 
         </div>
 
-    </div>
-
-    <div>
-        <?php
-        include_once ("semana.php");
-        ?>
     </div>
 
     <div id="crear_evento" style="display:none;">
