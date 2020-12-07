@@ -4,13 +4,13 @@ session_start();
 require_once("gestionBD.php");
 require_once("gestionarCalendarios.php");
 
-if (isset($_SESSION["form"])) {
-    $nuevoCalendario = $_SESSION["form"];
-    $_SESSION["form"] = null;
+if (isset($_SESSION["formCalendario"])) {
+    $nuevoCalendario = $_SESSION["formCalendario"];
+    $_SESSION["formCalendario"] = null;
     $_SESSION["errores"] = null;
 }
 else
-    Header("Location: form_nuevo_calendario.php");
+    Header("Location: main.php");
 
 $conexion = crearConexionBD();
 
@@ -30,7 +30,6 @@ include_once("cabecera.php");
 
 <main>
     <?php if (alta_calendario($conexion, $nuevoCalendario)) {
-        $_SESSION['login'] = $nuevoCalendario['uvus'];
         ?>
         <h1>Tu calendario se ha creado/modificado </h1>
         <div >

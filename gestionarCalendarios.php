@@ -59,7 +59,7 @@
         try {
             $consulta = "CALL UNFOLLOW_CALENDARIO(:oidu, :oidc )";
             $stmt = $conexion->prepare($consulta);
-            $stmt->bindParam('oidu', $calendario["oidu"]);
+            $stmt->bindParam(':oidu', $calendario["oidu"]);
             $stmt->bindParam(':oidc', $calendario["oidc"]);
 
             $stmt->execute();

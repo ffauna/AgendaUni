@@ -4,65 +4,51 @@ require ("gestionBD.php");
 require ("gestionarUsuarios.php");
 require ("gestionarCalendarios.php");
 
-//este array es para traducir el mes a español
-$meses = array(
-    'January' => 'Enero',
-    'February' => 'Febrero',
-    'March' => 'Marzo',
-    'April' => 'Abril',
-    'May' => 'Mayo',
-    'June' => 'Junio',
-    'July' => 'Julio',
-    'August' => 'Agosto',
-    'September' => 'Septiembre',
-    'October' => 'Octubre',
-    'November' => 'Noviembre',
-    'December' => 'Diciembre'
-);
-
-    function getMesAnyo($numMes){
-        $fecha = DateTime::createFromFormat('!m', $numMes);
-        return $fecha->format('F');
-    }
-
-    if (!isset($_SESSION['login']))
-    Header("Location: login.php");
-    else {
+if (!isset($_SESSION['login']))
+Header("Location: login.php");
+else {
     if (isset($_SESSION['login'])) {
         $uvus = $_SESSION['login'];
     }
 }
 
-    if (isset($_SESSION["paginacion"]))
-        $paginacion = $_SESSION["paginacion"];
+$conexion = crearConexionBD();
+$oidU = getOIDUsuario($conexion, $uvus);
+$tipoUsuario = getTipoUsuario($conexion, $uvus);
+$_SESSION['oidUsuario'] = $oidU;
+$_SESSION['tipoUsuario'] = $tipoUsuario;
 
-    $pagina_seleccionada = isset($_GET["PAG_NUM"]) ? (int)$_GET["PAG_NUM"] : (isset($paginacion) ? (int)$paginacion["PAG_NUM"] : 1);
-    $pag_tam = isset($_GET["PAG_TAM"]) ? (int)$_GET["PAG_TAM"] : (isset($paginacion) ? (int)$paginacion["PAG_TAM"] : 5);
+if (isset($_SESSION["paginacion"]))
+    $paginacion = $_SESSION["paginacion"];
 
-    if ($pagina_seleccionada < 1) 		$pagina_seleccionada = 1;
-    if ($pag_tam < 1) 		$pag_tam = 5;
+$pagina_seleccionada = isset($_GET["PAG_NUM"]) ? (int)$_GET["PAG_NUM"] : (isset($paginacion) ? (int)$paginacion["PAG_NUM"] : 1);
+$pag_tam = isset($_GET["PAG_TAM"]) ? (int)$_GET["PAG_TAM"] : (isset($paginacion) ? (int)$paginacion["PAG_TAM"] : 5);
 
-    unset($_SESSION["paginacion"]);
+if ($pagina_seleccionada < 1) 		$pagina_seleccionada = 1;
+if ($pag_tam < 1) 		$pag_tam = 5;
 
-    $conexion = crearConexionBD();
-    $oidU = getOIDUsuario($conexion, $uvus);
+unset($_SESSION["paginacion"]);
 
+$query = 'SELECT NOMBRE, DESCRIPCION FROM CALENDARIOS WHERE OID_U=' . $oidU;
 
-    $query = 'SELECT NOMBRE, DESCRIPCION FROM CALENDARIOS WHERE OID_U=' . $oidU;
+$total_calendarios = total_calendarios($conexion, $query);
+$total_paginas = (int)($total_calendarios / $pag_tam);
 
-    $total_calendarios = total_calendarios($conexion, $query);
-    $total_paginas = (int)($total_calendarios / $pag_tam);
+if ($total_calendarios % $pag_tam > 0)		$total_paginas++;
 
-    if ($total_calendarios % $pag_tam > 0)		$total_paginas++;
+if ($pagina_seleccionada > $total_paginas)		$pagina_seleccionada = $total_paginas;
 
-    if ($pagina_seleccionada > $total_paginas)		$pagina_seleccionada = $total_paginas;
+$paginacion["PAG_NUM"] = $pagina_seleccionada;
+$paginacion["PAG_TAM"] = $pag_tam;
+$_SESSION['paginacion'] = $paginacion;
+$filas = consultar_calendarios($conexion, $oidU);
 
-    $paginacion["PAG_NUM"] = $pagina_seleccionada;
-    $paginacion["PAG_TAM"] = $pag_tam;
-    $_SESSION['paginacion'] = $paginacion;
-    $filas = consultar_calendarios($conexion, $oidU);
+if(isset($_SESSION['errores'])){
+    $errores = $_SESSION['errores'];
+    unset($_SESSION['errores']);
+}
 
-    $conexion = cerrarConexionBD($conexion);
+$conexion = cerrarConexionBD($conexion);
 
 
 ?>
@@ -81,7 +67,14 @@ $meses = array(
 <body>
 
 <main>
-
+    <?php
+    if (isset($errores) && count($errores)>0) {
+        echo "<div id=\"div_errores\" class=\"error\">";
+        echo "<h4> Errores:</h4>";
+    foreach($errores as $error) echo $error;
+        echo "</div>";
+    }
+    ?>
     <div class="boton_creaCalen">
         <button name="btn_creaCalen" id="crear-calendario"><i class="fas fa-plus"></i>Nuevo Calendario</button>
     </div>
@@ -112,8 +105,6 @@ $meses = array(
                     <?php } ?>
 
             </div>
-
-
 
             <form method="get" action="main.php">
 
@@ -160,10 +151,8 @@ $meses = array(
 
     </div>
 
-    <div id="crear_evento" style="display:none;">
-        <?php
-        include_once ("form_nuevo_evento.php");
-        ?>
+    <div id="plantilla-calendario">
+
     </div>
 
 </main>

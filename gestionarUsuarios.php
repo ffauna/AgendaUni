@@ -32,6 +32,7 @@ function getNombreUsuario ($conexion, $uvus, $pass){
      return $stmt->fetchColum();
 }
 
+//Devuelve el oid de usuario en la bbdd
 function getOIDUsuario($conexion, $uvus){
      $consulta = "SELECT OID_U FROM USUARIOS WHERE UVUS=:uvus";
      $stmt = $conexion->prepare($consulta);
@@ -39,4 +40,14 @@ function getOIDUsuario($conexion, $uvus){
      $stmt->execute();
      return $stmt->fetchColumn();
 }
+
+//Devuelve ADMIN o ALUMNO
+function getTipoUsuario($conexion, $uvus){
+ 	$consulta = "SELECT TIPOUSUARIO FROM USUARIOS WHERE UVUS=:uvus";
+	$stmt = $conexion->prepare($consulta);
+	$stmt->bindParam(':uvus',$uvus);
+	$stmt->execute();
+	return $stmt->fetchColumn();	
+}
+
 ?>

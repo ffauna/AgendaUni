@@ -17,6 +17,7 @@ if(!isset($_SESSION['form'])){
 
 if(isset($_SESSION['errores'])){
     $errores = $_SESSION['errores'];
+    unset($_SESSION['errores']);
 }
 
     $conexion = crearConexionBD();
