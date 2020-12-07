@@ -3,6 +3,7 @@ session_start();
 require ("gestionBD.php");
 require ("gestionarUsuarios.php");
 require ("gestionarCalendarios.php");
+require ("gestionEvento.php");
 
 if (!isset($_SESSION['login']))
 Header("Location: login.php");
@@ -83,7 +84,16 @@ $conexion = cerrarConexionBD($conexion);
         include_once("form_nuevo_calendario.php");
         ?>
     </div>
+    <div class="boton_creaEvento">
+        <button name="btn_creaEvento" id="crear-evento"><i class="fas fa-plus"></i>Nuevo Evento</button>
+       
+    </div>
+    <div id="form-evento" class="oculto">
+        <?php
+        include_once("form_nuevo_evento.php");
 
+        ?>
+    </div>
     <div class="calendarios_paginados">
 
         <nav>

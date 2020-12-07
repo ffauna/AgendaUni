@@ -25,6 +25,7 @@
         echo "</div>";
     }
     ?>
+    <script type="text/javascript" src="js/index.js"></script>
     <form id="nuevoEvento" method="get" action="main.php">
         <div class="f_cabecera">
             <p>Programa un evento!</p>
@@ -46,6 +47,7 @@
             </div>
             <div>
             <input type="submit" value="Crear"></div>
+        </div>
     </form>
 
  
