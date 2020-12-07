@@ -18,7 +18,7 @@ if (!isset($_SESSION)) {
     }
 ?>
 
-<script type="text/javascript" src="js/index.js"></script>
+
 <form id="nuevoCalendario" method="POST" action="validar_alta_calendario.php">
     
     <div class="f_cabecera">
