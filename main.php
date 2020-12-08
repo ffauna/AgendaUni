@@ -1,15 +1,9 @@
 <?php
 session_start();
-<<<<<<< HEAD
 require("gestionBD.php");
 require("gestionarUsuarios.php");
 require("gestionarCalendarios.php");
-=======
-require ("gestionBD.php");
-require ("gestionarUsuarios.php");
-require ("gestionarCalendarios.php");
-require ("gestionEvento.php");
->>>>>>> e96abc943d38401eab20593252eb516df208cd24
+require("gestionEvento.php");
 
 if (!isset($_SESSION['login']))
     Header("Location: login.php");
@@ -102,33 +96,24 @@ $conexion = cerrarConexionBD($conexion);
             echo "</div>";
         }
         ?>
-<<<<<<< HEAD
-        <div class="botones_creacion">
-            <div class="boton_creaCalen">
-                <button name="btn_creaCalen" id="crear-calendario"><i class="fas fa-plus"></i>Nuevo Calendario</button>
-            </div>
+        <div class="boton_creaCalen">
+            <button name="btn_creaCalen" id="crear-calendario"><i class="fas fa-plus"></i>Nuevo Calendario</button>
         </div>
         <div id="form-calendario" class="oculto">
             <?php
             include_once("form_nuevo_calendario.php");
             ?>
         </div>
-
-        <div class="calendarios_paginados">
-=======
-    </div>
-    <div class="boton_creaEvento">
-        <button name="btn_creaEvento" id="crear-evento"><i class="fas fa-plus"></i>Nuevo Evento</button>
-       
-    </div>
-    <div id="form-evento" class="oculto">
-        <?php
-        include_once("form_nuevo_evento.php");
-
-        ?>
-    </div>
+        <div class="boton_creaEvento">
+            <button name="btn_creaEvento" id="crear-evento"><i class="fas fa-plus"></i>Nuevo Evento</button>
+        </div>
+        <div id="form-evento" class="oculto">
+            <?php
+            include_once("form_nuevo_evento.php");
+            ?>
+        </div>
+    
     <div class="calendarios_paginados">
->>>>>>> e96abc943d38401eab20593252eb516df208cd24
 
             <nav>
 

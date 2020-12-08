@@ -17,8 +17,6 @@ if (!isset($_SESSION)) {
         $form = $_SESSION['formCalendario'];
     }
 ?>
-
-
 <form id="nuevoCalendario" method="POST" action="validar_alta_calendario.php">
     
     <div class="f_cabecera">
