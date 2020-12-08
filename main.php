@@ -143,39 +143,43 @@ $conexion = cerrarConexionBD($conexion);
             </nav>
 
             <div class="lista_Cal">
+            <form method="POST">
                 <?php
                 $limite = $pagina_seleccionada*($pag_tam + 1) > $total_paginas ? $total_paginas : $pagina_seleccionada+$pag_tam;
                 for ($i=$pagina_seleccionada*$pag_tam; $i < $limite; $i++) { 
-                    if(isset($_POST["borrarCal-".$filas[$i]['OID_C']])) { 
-                        echo "This is Button1 that is selected"; 
+                    $fila = $filas[$i];
+                    if(isset($_POST["borrarCal-".$fila['OID_C']])) { 
+                        echo eliminar_calendario($conexion,$oidc); 
                     }
                 ?>
+                    
                     <div class="elemento-lista">
-                        <?php if (!(is_null($filas[$i]['DESCRIPCION']))) { ?>
+                        <?php if (!(is_null($fila['DESCRIPCION']))) { ?>
                             <div class="elemento-cal">
-                                <h4 class="nombre"><?php echo $filas[$i]['NOMBRE']  ?> 
+                                <h4 class="nombre"><?php echo $fila['NOMBRE']  ?> 
                                     <a href="form_update_calendario.php">
                                         <img src="img/editar.png" width="15px" height="15px"> 
                                     </a> 
-                                    <button value="borrarCal-<?php echo $filas[$i]['OID_C']?>">
+                                    <button value="borrarCal-<?php echo $fila['OID_C']?>">
                                         <img src="img/basura.png" width="15px" height="15px">
                                     </button> 
                                 </h4>
-                                <h5 class="desc-cal"><?php echo $filas[$i]['DESCRIPCION']; ?></h5>
+                                <h5 class="desc-cal"><?php echo $fila['DESCRIPCION']; ?></h5>
                             </div>
                         <?php } else { ?>
                             <div id="<?php echo $filas[$i]['OID_C']?>" class="elemento-cal">
-                                <h4 class="nombre"><?php echo $filas[$i]['NOMBRE'] ?>
+                                <h4 class="nombre"><?php echo $fila['NOMBRE'] ?>
                             </div>
                         <?php
                         }
                         ?>
                     </div>
+                    
                 <?php
                 }
                 cerrarConexionBD($conexion);
                 ?>
-
+                </form>
             </div>
 
         </div>
