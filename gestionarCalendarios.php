@@ -19,7 +19,7 @@
 
     function consultar_calendarios($conexion, $oidu){
         try {
-            $consulta = "SELECT NOMBRE, DESCRIPCION FROM CALENDARIOS WHERE OID_U=:oidu";
+            $consulta = "SELECT OID_C, NOMBRE, DESCRIPCION FROM CALENDARIOS WHERE OID_U=:oidu";
 
             $stmt = $conexion->prepare($consulta);
             $stmt->bindParam(':oidu', $oidu);
@@ -72,16 +72,11 @@
 
     function modifica_calendario($conexion,$calendario) {
         try {
-            $consulta = "CALL MODIFICA_CALENDARIO(:nombre,:latitud,:longitud, :fechainicio, :fechafin,:tipoevento,:diacompleto,:descripcion)";
+            $consulta = "UPDATE CALENDARIOS SET NOMBRE=:nombre, DESCRIPCION=:descripcion WHERE OID_C=:oidc";
             $stmt=$conexion->prepare($consulta);
-            $stmt->bindParam(':nombre',$evento["nombre"]);
-            $stmt->bindParam(':latitud',$evento["latitud"]);
-            $stmt->bindParam(':longitud',$evento["longitud"]);
-            $stmt->bindParam(':fechainicio',$evento["fechainicio"]);
-            $stmt->bindParam(':horafin',$evento["horafin"]);
-            $stmt->bindParam(':tipoevento',$evento["tipoevento"]);
-            $stmt->bindParam(':diacompleto',$evento["diacompleto"]);
-            $stmt->bindParam(':descripcion',$evento["descripcion"]);
+            $stmt->bindParam(':nombre',$calendario["nombre"]);
+            $stmt->bindParam(':descripcion',$calendario["descripcion"]);
+            $stmt->bindParam(':oidc', $calendario["oidc"]);
             $stmt->execute();
             return true;
         } catch(PDOException $e) {
@@ -90,13 +85,11 @@
     }
 
 
-    function eliminar_calendario($conexion,$oidc, $oidu, $nombre)
+    function eliminar_calendario($conexion,$oidc)
     {
-        $delete = "DELETE FROM CALENDARIOS WHERE OID_U=:oidu  AND OID_C=oid_c AND NOMBRE=:nombre" ;
+        $delete = "DELETE FROM CALENDARIOS WHERE OID_C=oid_c";
         $stmt = $conexion->prepare($delete);
         $stmt->bindParam(':oidc',$oidc);
-        $stmt->bindParam(':oidu',$oidu);
-        $stmt->bindParam(':nombre',$nombre);
         $stmt->execute();
         return true;
     }
