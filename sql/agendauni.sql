@@ -73,8 +73,6 @@
    (	"OID_E" NUMBER(*,0), 
 	"NOMBRE" VARCHAR2(256 BYTE), 
 	"FECHA" DATE, 
-	"HORAINICIO" DATE, 
-	"HORAFIN" DATE,
 	"DESCRIPCION" VARCHAR2(2048 BYTE), 
 	"OID_C" NUMBER(*,0), 
 	"OID_G" NUMBER(*,0)
@@ -155,8 +153,8 @@ REM INSERTING into AGENDAU.PERMISOS
 SET DEFINE OFF;
 REM INSERTING into AGENDAU.USUARIOS
 SET DEFINE OFF;
-Insert into AGENDAU.USUARIOS (OID_U,NOMBRE,APELLIDOS,TIPOUSUARIO,UVUS,PASS) values ('1','Julia','Ibañez Montero','ADMIN','julibamon@us.es','1234');
-Insert into AGENDAU.USUARIOS (OID_U,NOMBRE,APELLIDOS,TIPOUSUARIO,UVUS,PASS) values ('2','Flora','Viegas Peñalosa','ADMIN','floviepen@us.es','1234');
+Insert into AGENDAU.USUARIOS (OID_U,NOMBRE,APELLIDOS,TIPOUSUARIO,UVUS,PASS) values ('1','Julia','Ibaï¿½ez Montero','ADMIN','julibamon@us.es','1234');
+Insert into AGENDAU.USUARIOS (OID_U,NOMBRE,APELLIDOS,TIPOUSUARIO,UVUS,PASS) values ('2','Flora','Viegas Peï¿½alosa','ADMIN','floviepen@us.es','1234');
 --------------------------------------------------------
 --  DDL for Index SYS_C006988
 --------------------------------------------------------
@@ -447,16 +445,10 @@ set define off;
   CREATE OR REPLACE PROCEDURE "AGENDAU"."INSERTAR_EVENTO" 
     (W_NOMBRE IN VARCHAR2,
     W_FECHA IN VARCHAR2,
-    W_HORAINICIO IN VARCHAR2,
-    W_HORAFIN IN VARCHAR2,
-    W_TIPOEVENTO IN VARCHAR2,
-    W_DIACOMPLETO IN VARCHAR2,
     W_DESCRIPCION IN VARCHAR2,
-    W_OID_C IN VARCHAR2,
-    W_OID_G IN VARCHAR2) AS 
+    W_OID_C IN VARCHAR2) AS 
 BEGIN
-  INSERT INTO EVENTOS VALUES(SEC_EVENTOS.nextval, w_nombre, w_fecha, w_horainicio, w_horafin, w_tipoevento,
-  w_diacompleto, w_descripcion, w_oid_c, w_oid_g);
+  INSERT INTO EVENTOS VALUES(SEC_EVENTOS.nextval, w_nombre, w_fecha, w_descripcion, w_oid_c);
 END INSERTAR_EVENTO;
 
 /
