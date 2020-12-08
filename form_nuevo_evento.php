@@ -1,22 +1,24 @@
 <?php
-
-    if(!isset($_SESSION['form'])){
+    
+    if(!isset($_SESSION['formEvento'])){
         $form['nombre'] = "";
         $form['fecha'] = "";
-        $form['horainicio'] = "";
-		$form['horafin'] = "";
-		$form['descripcion'] = "";
+        $form['descripcion'] = "";
+        $form['oid_c']="";
 
-        $_SESSION['form'] = $form;
+        $_SESSION['formEvento'] = $form;
     } else {
-        $form = $_SESSION['form'];
+        $form = $_SESSION['formEvento'];
     }
 
     if(isset($_SESSION['errores'])){
         $errores = $_SESSION['errores'];
     }
-?>
+    
 
+
+?>
+    
 <?php
     if (isset($errores) && count($errores)>0) {
         echo "<div id=\"div_errores\" class=\"error\">";
@@ -26,7 +28,7 @@
     }
     ?>
     <script type="text/javascript" src="js/index.js"></script>
-    <form id="nuevoEvento" method="get" action="main.php">
+    <form id="nuevoEvento" method="POST" action="validar_alta_evento.php">
         <div class="f_cabecera">
             <p>Programa un evento!</p>
         </div>
@@ -34,14 +36,20 @@
             <div><label for="nombre">Título:</label>
                 <input id="nombre" name="nombre" type="text" size="40" value="<?php echo $form['nombre'];?>" required/>
             </div>
+            <div><label for="oid_c">Calendario:</label>
+                <select name="oid_c" id="oid_c">
+                
+                    <?php 
+                    
+                    foreach($listaId as $elemento) { 
+                            ?> <option name="oid_c" id="oid_c" value="<?php echo $elemento[0]; ?>"> <?php echo $elemento[1]; ?></option>
+                    <?php
+                    } ?>
+                    
+                </select>   
+            </div>
             <div><label>Fecha:</label>
-                <input id="fecha" type="date"></div>
-            <div><label>Hora inicio:</label>
-                <input id="horainicio" type="time">
-            </div>
-            <div><label>Hora fin:</label>
-                <input id="horafin" type="time">
-            </div>
+                <input name="fecha" id="fecha" type="text" placeholder="dd/mm/yyyy"></div>
             <div><label for="descripcion">Descripcion:</label>
                 <input id="descripcion" name="descripcion" type="text" size="40" value="<?php echo $form['descripcion'];?>" />
             </div>

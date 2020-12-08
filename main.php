@@ -31,6 +31,10 @@ if ($pag_tam < 1) 		$pag_tam = 5;
 unset($_SESSION["paginacion"]);
 
 $query = 'SELECT NOMBRE, DESCRIPCION FROM CALENDARIOS WHERE OID_U=' . $oidU;
+$listaId=array();
+$listaId=listaOidPorOidU($conexion,$oidU);
+        
+
 
 $total_calendarios = total_calendarios($conexion, $query);
 $total_paginas = (int)($total_calendarios / $pag_tam);
