@@ -35,9 +35,6 @@ else
 
 ?>
 
-<p><?php $_SESSION['formCalendario'] ?></p>
-<p><?php $_SESSION['errores'] ?></p>
-
 <?php
 function validarDatosCalendario($conexion, $nuevoCalendario)
 {
