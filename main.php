@@ -1,9 +1,9 @@
 <?php
 session_start();
-require("gestionBD.php");
-require("gestionarUsuarios.php");
-require("gestionarCalendarios.php");
-require("gestionEvento.php");
+require ("gestionBD.php");
+require ("gestionarUsuarios.php");
+require ("gestionarCalendarios.php");
+require ("gestionEvento.php");
 
 if (!isset($_SESSION['login']))
     Header("Location: login.php");
@@ -96,27 +96,40 @@ $conexion = cerrarConexionBD($conexion);
             echo "</div>";
         }
         ?>
-        <div class="boton_creaCalen">
-            <button name="btn_creaCalen" id="crear-calendario"><i class="fas fa-plus"></i>Nuevo Calendario</button>
         </div>
-        <div id="form-calendario" class="oculto">
-            <?php
-            include_once("form_nuevo_calendario.php");
-            ?>
-        </div>
-        <div class="boton_creaEvento">
-            <button name="btn_creaEvento" id="crear-evento"><i class="fas fa-plus"></i>Nuevo Evento</button>
-        </div>
-        <div id="form-evento" class="oculto">
-            <?php
-            include_once("form_nuevo_evento.php");
-            ?>
-        </div>
-    
-    <div class="calendarios_paginados">
 
+        <div class="botones_creacion">
+            <div class="boton_creaCalen">
+                <button name="btn_creaCalen" id="crear-calendario"><i class="fas fa-plus"></i>Nuevo Calendario</button>
+            </div>
+            <div class="boton_creaEvento">
+                <button name="btn_creaEvento" id="crear-evento"><i class="fas fa-plus"></i>Nuevo Evento</button>
+            </div>
+        </div>
+
+        <div class="forms_creacion">
+            <div id="form-calendario" class="oculto">
+                <?php
+                include_once("form_nuevo_calendario.php");
+                ?>
+            </div>
+            <div id="form-evento" class="oculto">
+                <?php
+                include_once("form_nuevo_evento.php");
+
+                ?>
+            </div>
+        </div>
+
+        <div class="calendarios_paginados_oficiales">
             <nav>
+                <h3>Calendarios Oficiales</h3>
+            </nav>
+        </div>
 
+        <div class="calendarios_paginados">
+            <nav>
+                <h3>Mis Calendarios</h3>
                 <div id="enlaces">
 
                     <?php
@@ -148,9 +161,6 @@ $conexion = cerrarConexionBD($conexion);
                     <input type="submit" value="Cambiar">
 
                 </form>
-
-
-
             </nav>
 
             <div class="lista_Cal">

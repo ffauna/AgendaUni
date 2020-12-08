@@ -23,7 +23,7 @@ if (!isset($_SESSION)) {
         <p>Crea tu calendario </p>
     </div>
 
-    <div class="datos_evento">
+    <div class="datos_calendario">
         <div><label for="nombre"><em>*</em> Nombre:</label>
             <input id="nombre" name="nombre" type="text" maxlength="256" required/>
         </div>

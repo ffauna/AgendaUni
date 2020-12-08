@@ -6,9 +6,15 @@ const formEvento = document.getElementById("form-evento")
 
 btnCalendario.addEventListener("click", event => {
 	formCalendario.classList.toggle("oculto");
+	if(!formEvento.classList.contains("oculto")){
+		formEvento.classList.toggle("oculto");
+	}
 });
 
 btnEvento.addEventListener("click", event => {
 	formEvento.classList.toggle("oculto");
+	if(!formCalendario.classList.contains("oculto")){
+		formCalendario.classList.toggle("oculto");
+	}
 });
 

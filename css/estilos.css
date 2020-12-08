@@ -209,6 +209,8 @@ header {
     display: inline-block;
 }
 
+/*Paginacion Calendarios*/
+
 .calendarios_paginados{
     grid-area: "calendarios_paginados";
     width: 300px;
@@ -258,17 +260,43 @@ header {
 
 /* Plantilla calendaio------------- */
 
-/* #plantilla_calendario{
-    grid-area: "plantilla_calendario";
+main{
+    position: relative;
 }
+
+#plantilla_calendario{
+    position: absolute;
+    height: 600px;
+    width: 600px;
+    transform: translate(90%,0);
+}
+
 
 #diasCalendario{
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     margin: auto;
-} */
+}
 
 /* Forms----------------- */
+.forms_creacion{
+    display: flex;
+    align-items: center;
+    width: 450px;
+}
+
+#nuevoCalendario{
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    background-color: grey;
+}
+
+#nuevoEvento{
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    background-color: grey;
+}
+
 #crear_calendario div {
     width: 400px;
     background-color: grey;
