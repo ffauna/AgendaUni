@@ -1,8 +1,10 @@
 <?php
 session_start();
-require("gestionBD.php");
-require("gestionarUsuarios.php");
-require("gestionarCalendarios.php");
+
+require ("gestionBD.php");
+require ("gestionarUsuarios.php");
+require ("gestionarCalendarios.php");
+require ("gestionEvento.php");
 
 if (!isset($_SESSION['login']))
     Header("Location: login.php");
@@ -34,6 +36,10 @@ if ($pag_tam < 1)         $pag_tam = 4;
 unset($_SESSION["paginacion"]);
 
 $query = 'SELECT NOMBRE, DESCRIPCION FROM CALENDARIOS WHERE OID_U=' . $oidU;
+$listaId=array();
+$listaId=listaOidPorOidU($conexion,$oidU);
+        
+
 
 $total_calendarios = total_calendarios($conexion, $query);
 $total_paginas = isset($_SESSION["PAG_TOT"]) ? $_SESSION["paginacion"]["PAG_TOT"] : (int)($total_calendarios / $pag_tam);
@@ -91,17 +97,32 @@ $conexion = cerrarConexionBD($conexion);
             echo "</div>";
         }
         ?>
+      
         <div class="botones_creacion">
             <div class="boton_creaCalen">
                 <button name="btn_creaCalen" id="crear-calendario"><i class="fas fa-plus"></i>Nuevo Calendario</button>
             </div>
+          </div>
+          <div class="boton_creaEvento">
+              <button name="btn_creaEvento" id="crear-evento"><i class="fas fa-plus"></i>Nuevo Evento</button>
+          </div>
         </div>
-        <div id="form-calendario" class="oculto">
+  
+  <div class="forms_creacion">
+            <div id="form-calendario" class="oculto">
             <?php
             include_once("form_nuevo_calendario.php");
             ?>
         </div>
+        <div id="form-evento" class="oculto">
+          <?php
+            include_once("form_nuevo_evento.php");
 
+          ?>
+        </div>
+  </div>
+  
+  
         <div class="calendarios_paginados">
 
             <nav>
