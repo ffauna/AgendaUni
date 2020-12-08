@@ -17,6 +17,17 @@
         }
     }
 
+    function getCalendariosOficiales($conexion){
+        try{
+            $consulta = "SELECT OID_C, NOMBRE, DESCRIPCION FROM CALENDARIOS WHERE TIPOCALENDARIO='OFICIAL'";
+            $stmt = $conexion->prepare($consulta);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch(PDOException $e){
+            $_SESSION['excepcion'] = $e->getMessage();
+        }
+    }
+
     function consultar_calendarios($conexion, $oidu){
         try {
             $consulta = "SELECT OID_C, NOMBRE, DESCRIPCION FROM CALENDARIOS WHERE OID_U=:oidu";

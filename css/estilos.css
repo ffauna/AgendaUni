@@ -1,13 +1,20 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
+
+html{
+    height: 100%;
+}
+
 body {
     /*background: url("/AgendaUni/img/fondo.png") no-repeat scroll center 0 transparent;*/
     background-size: contain;
     align-items: center;
     margin: 0;
     padding: 0;
-    padding-bottom: 6rem;
+    min-height: 100%;
     background-color: #34495e;
 }
 
@@ -27,6 +34,7 @@ header {
 }
 
 .footer {
+    grid-area: "footer";
     position: absolute;
     right: 0;
     bottom: 0;
@@ -201,7 +209,10 @@ header {
     display: inline-block;
 }
 
+/*Paginacion Calendarios*/
+
 .calendarios_paginados{
+    grid-area: "calendarios_paginados";
     width: 300px;
     background-color: #f1c40f;
     position: absolute;
@@ -231,15 +242,61 @@ header {
     margin-bottom: 5px;
     display: inline-block;
 }
+/* GRID body */
 
-.calendario{
+/* .grid-body{
+    display: grid;
+    grid-template-areas: 
+    "footer"                "footer"                "footer"
+    "botones_creacion"      "plantilla_calendario"  "plantilla_calendario"
+    "calendarios_paginados" "plantilla_calendario"  "plantilla_calendario"
+    "footer"                "footer"                "footer"
+    ;
+}
+
+#botones_creacion{
+    grid-area: "botones_creacion";
+} */
+
+/* Plantilla calendaio------------- */
+
+main{
+    position: relative;
+}
+
+#plantilla_calendario{
     position: absolute;
     height: 600px;
     width: 600px;
     transform: translate(90%,0);
 }
 
+
+#diasCalendario{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin: auto;
 }
+
+/* Forms----------------- */
+.forms_creacion{
+    display: flex;
+    align-items: center;
+    width: 450px;
+}
+
+#nuevoCalendario{
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    background-color: grey;
+}
+
+#nuevoEvento{
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    background-color: grey;
+}
+
 #crear_calendario div {
     width: 400px;
     background-color: grey;
@@ -284,95 +341,8 @@ header {
     transition: 0.5s;
     cursor: pointer;
 }
-
-#mensual {
-    width: max-content;
-    box-sizing: border-box;
-    margin-left: 40%;
-}
-
-#mes-anyo{
-    font-size: 35px;
-    font-family: Roboto, sans-serif;
-    font-weight: bold;
-    text-align: right;
-}
-
-#semanal, #mensual{
-    position: absolute;
-    transform: translate(90%, -10%);
-    width: 50%;
-    height: 80%;
-    background-color: #e74c3c;
-}
-
-#semanal table, #mensual table{
-    width: 100%;
-    height: 100%;
-}
-
-#mes {
-    border-color: lightgray;
-    border-width: thin;
-}
-
-#semana {
-    border-color: lightgray;
-    border-width: thin;
-    background-color: lightgray;
-}
-
 .cabecera {
     color: gray;
-}
-
-.dias {
-    /*border: groove;*/
-    /*border-color: lightgray;*/
-    /*border-width: thin;*/
-    background-color: white;
-    padding: 50px;
-}
-
-.horas {
-    border: groove;
-    border-color: lightgray;
-    border-width: thin;
-    min-width: 100px;
-    max-width: 100px;
-    background-color: white;
-    margin: 0;
-}
-
-.hora-dia{
-    height: 30px;
-    width: 30px;
-    color: gray;
-}
-
-.dia_semana {
-    color: gray;
-    font-size: 15px;
-    position: relative;
-    top: -45px;
-}
-
-.dia_mes {
-    color: black;
-    font-size: 15px;
-    position: relative;
-    top: -45px;
-    left: 10px;
-}
-
-.pestana_calendario{
-    border : solid 2px #bebdbf;
-    background : #ffffff;
-    color : #000000;
-    padding : 4px;
-    width : 200px;
-    height : 250px;
-    overflow : auto;
 }
 
 .oculto{
@@ -386,8 +356,4 @@ header {
     text-align: initial;
     text-align: center;
     color: white
-}
-
-.about h1 {
-    color: 
 }
